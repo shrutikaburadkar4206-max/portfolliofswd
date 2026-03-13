@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrutika Buradkar | Portfolio</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #4b6cb7;
+            --secondary-color: #182848;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(75, 108, 183, 0.9), rgba(24, 40, 72, 0.9)), url('https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .profile-image-container {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--primary-color);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .about-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 50px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .about-content {
+            padding: 20px;
+        }
+        
+        .about-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #eef4ff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .education-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .education-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .education-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .education-card:hover .education-image img {
+            transform: scale(1.05);
+        }
+        
+        .percentage-badge {
+            background-color: #eef4ff;
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #eef4ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            transition: all 0.3s;
+        }
+        
+        .contact-item:hover .contact-icon {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .contact-link {
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .linkedin-btn {
+            background-color: #0077b5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .linkedin-btn:hover {
+            background-color: #005582;
+            color: white;
+        }
+        
+        .skill-badge {
+            background-color: #f0f4ff;
+            color: var(--primary-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+            border: 1px solid #d1dcff;
+        }
+        
+        .footer-section {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .gallery-image {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0;
+            }
+            
+            .profile-image-container {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .profile-image {
+                font-size: 4rem;
+            }
+            
+            .about-section {
+                padding: 30px;
+                margin-top: -30px;
+            }
+            
+            .about-image {
+                height: 300px;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-user-graduate text-primary me-2"></i>Shrutika Buradkar
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section mt-5 pt-5">
+        <div class="container">
+            <div class="profile-image-container">
+                <div class="profile-image">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+            </div>
+            <h1 class="display-4 fw-bold mb-3">Shrutika Buradkar</h1>
+            <p class="lead mb-4">Engineering Student at Suryodaya College of Engineering & Technology, Nagpur</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <p class="fs-5">A dedicated engineering student with a strong academic foundation, passionate about applying technical knowledge to solve real-world problems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section with Image -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="about-section">
+                <h2 class="section-title">About Me</h2>
+                <div class="row align-items-center">
+                    <div class="col-lg-5 mb-4 mb-lg-0">
+                        <div class="about-image">
+                            <!-- Replace with your actual image URL -->
+                            <img src="c:\Users\mu143\Downloads\WhatsApp Image 2026-01-29 at 12.39.10 PM.jpeg" alt="Shrutika Buradkar - About Image">
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="about-content">
+                            <h3 class="mb-4">Hello, I'm Shrutika Buradkar</h3>
+                            <p class="mb-4">I am a passionate engineering student currently pursuing my B.Tech degree at Suryodaya College of Engineering & Technology in Nagpur. My journey in engineering began with a strong interest in problem-solving and innovation.</p>
+                            
+                            <div class="d-flex mb-4">
+                                <div class="about-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h4>Academic Journey</h4>
+                                    <p>My academic foundation was built at Sanjuba High School and Adarsh Sankar Vidyalaya, where I developed strong analytical and scientific skills that prepared me for engineering studies.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-4">
+                                <div class="about-icon">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <div>
+                                    <h4>Goals & Aspirations</h4>
+                                    <p>My goal is to leverage my engineering education to contribute to innovative projects that solve real-world challenges. I am particularly interested in applying theoretical knowledge to practical applications.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex">
+                                <div class="about-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div>
+                                    <h4>Interests</h4>
+                                    <p>Beyond academics, I enjoy exploring new technologies, participating in technical workshops, and collaborating on projects that enhance my engineering skills.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Education Details</h2>
+            <p class="text-center mb-5">My academic journey and educational background</p>
+            
+            <div class="row">
+                <!-- B.Tech -->
+                <div class="col-md-4 mb-4">
+                    <div class="card education-card">
+                        <div class="education-image">
+                            <img src="c:\Users\mu143\Downloads\WhatsApp Image 2026-01-29 at 1.31.11 PM.jpeg" alt="Engineering College">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h4 mb-3">Bachelor of Technology</h3>
+                            <h4 class="h5 text-primary mb-2">Suryodaya College of Engineering & Technology</h4>
+                            <p class="mb-2"><i class="fas fa-map-marker-alt me-2 text-muted"></i><strong>Location:</strong> Nagpur</p>
+                            <p class="mb-3">Currently pursuing B.Tech degree in Engineering with a focus on practical applications and technical skill development.</p>
+                            <div class="percentage-badge"><i class="fas fa-spinner me-2"></i>Ongoing</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 12th Grade -->
+                <div class="col-md-4 mb-4">
+                    <div class="card education-card">
+                        <div class="education-image">
+                            <img src="c:\Users\mu143\Downloads\WhatsApp Image 2026-01-29 at 1.34.43 PM.jpeg " alt="High School">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h4 mb-3">Higher Secondary (12th)</h3>
+                            <h4 class="h5 text-primary mb-2">Adarsh Sankar Vidyalaya</h4>
+                            <p class="mb-3">Completed 12th grade with excellent academic performance, focusing on science and mathematics.</p>
+                            <div class="percentage-badge"><i class="fas fa-chart-line me-2"></i>Score: 68%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 10th Grade -->
+                <div class="col-md-4 mb-4">
+                    <div class="card education-card">
+                        <div class="education-image">
+                            <img src="c:\Users\mu143\Downloads\WhatsApp Image 2026-01-29 at 1.32.14 PM.jpeg" alt="School">
+                        </div>
+                        <div class="card-body p-4">
+                            <h3 class="h4 mb-3">Secondary School (10th)</h3>
+                            <h4 class="h5 text-primary mb-2">Sanjuba High School</h4>
+                            <p class="mb-3">Completed 10th grade with strong foundational knowledge in core subjects, establishing a solid academic base.</p>
+                            <div class="percentage-badge"><i class="fas fa-chart-line me-2"></i>Score: 62%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Education Timeline -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="h4 mb-4 text-center text-primary">Academic Journey Timeline</h3>
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                                <div class="text-center mb-4 mb-md-0 position-relative">
+                                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="fw-bold fs-5">2022</div>
+                                        <div class="text-primary fw-medium">Sanjuba High School</div>
+                                        <div>10th Grade - 62%</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-none d-md-block">
+                                    <i class="fas fa-arrow-right fa-2x text-primary mx-4"></i>
+                                </div>
+                                <div class="d-block d-md-none my-3">
+                                    <i class="fas fa-arrow-down fa-2x text-primary"></i>
+                                </div>
+                                
+                                <div class="text-center mb-4 mb-md-0 position-relative">
+                                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="fw-bold fs-5">2024</div>
+                                        <div class="text-primary fw-medium">Adarsh Sankar Vidyalaya</div>
+                                        <div>12th Grade - 68%</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-none d-md-block">
+                                    <i class="fas fa-arrow-right fa-2x text-primary mx-4"></i>
+                                </div>
+                                <div class="d-block d-md-none my-3">
+                                    <i class="fas fa-arrow-down fa-2x text-primary"></i>
+                                </div>
+                                
+                                <div class="text-center position-relative">
+                                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 60px; height: 60px;">
+                                        <i class="fas fa-user-graduate"></i>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="fw-bold fs-5">2024-Present</div>
+                                        <div class="text-primary fw-medium">Suryodaya College of Engg.</div>
+                                        <div>B.Tech - Ongoing</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Skills & Interests</h2>
+            <p class="text-center mb-5">Technical competencies and areas of interest as an engineering student</p>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h3 class="h4 mb-0">Technical Skills</h3>
+                            </div>
+                            <div class="mb-3">
+                                <span class="skill-badge">Engineering Fundamentals</span>
+                                <span class="skill-badge">Technical Problem Solving</span>
+                                <span class="skill-badge">Academic Research</span>
+                                <span class="skill-badge">Project Development</span>
+                                <span class="skill-badge">Analytical Thinking</span>
+                                <span class="skill-badge">Mathematics</span>
+                                <span class="skill-badge">Physics Principles</span>
+                                <span class="skill-badge">Technical Documentation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3 class="h4 mb-0">Professional Skills</h3>
+                            </div>
+                            <div class="mb-3">
+                                <span class="skill-badge">Team Collaboration</span>
+                                <span class="skill-badge">Communication</span>
+                                <span class="skill-badge">Time Management</span>
+                                <span class="skill-badge">Academic Writing</span>
+                                <span class="skill-badge">Presentation Skills</span>
+                                <span class="skill-badge">Adaptability</span>
+                                <span class="skill-badge">Critical Thinking</span>
+                                <span class="skill-badge">Attention to Detail</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Academic Gallery</h2>
+            <p class="text-center mb-5">Visual representation of academic journey and interests</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Engineering Lab">
+                    </div>
+                    <h5 class="text-center">Engineering Laboratory</h5>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Technical Study">
+                    </div>
+                    <h5 class="text-center">Technical Study Session</h5>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Project Work">
+                    </div>
+                    <h5 class="text-center">Project Development</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <p class="text-center mb-5">Get in touch for inquiries, collaboration, or further information</p>
+            
+            <div class="row justify-content-center">
+                <!-- Email -->
+                <div class="col-md-5 mb-4">
+                    <div class="contact-item text-center">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Email Address</h3>
+                        <p class="mb-4">For academic inquiries, collaboration opportunities, or further information about my educational journey.</p>
+                        <a href="mailto:Shrutikaburadkar4206@gmail.com" class="contact-link fw-bold d-block fs-5">
+                            <i class="fas fa-envelope me-2"></i>Shrutikaburadkar4206@gmail.com
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- LinkedIn -->
+                <div class="col-md-5 mb-4">
+                    <div class="contact-item text-center">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <h3 class="h4 mb-3">LinkedIn Profile</h3>
+                        <p class="mb-4">Connect with me professionally on LinkedIn to view my academic achievements and network.</p>
+                        <a href="https://www.linkedin.com/in/shrutika-buradkar-2b1a53338" target="_blank" class="linkedin-btn mb-3">
+                            <i class="fab fa-linkedin-in me-2"></i> View LinkedIn Profile
+                        </a>
+                        <p class="mt-3 small">
+                            <a href="https://www.linkedin.com/in/shrutika-buradkar-2b1a53338" target="_blank" class="text-muted">
+                                linkedin.com/in/shrutika-buradkar-2b1a53338
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="profile-image-container mb-4" style="width: 100px; height: 100px;">
+                <div class="profile-image">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+            </div>
+            <h3 class="h4 mb-3">Shrutika Buradkar</h3>
+            <p class="mb-3">Engineering Student | Suryodaya College of Engineering & Technology, Nagpur</p>
+            <div class="mb-3">
+                <a href="mailto:Shrutikaburadkar4206@gmail.com" class="text-white me-4">
+                    <i class="fas fa-envelope me-1"></i> Email
+                </a>
+                <a href="https://www.linkedin.com/in/shrutika-buradkar-2b1a53338" target="_blank" class="text-white">
+                    <i class="fab fa-linkedin-in me-1"></i> LinkedIn
+                </a>
+            </div>
+            <p class="mb-0">&copy; 2026 Shrutika Buradkar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
